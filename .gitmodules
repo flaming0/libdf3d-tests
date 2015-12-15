@@ -1,0 +1,3 @@
+[submodule "code/libdf3d"]
+	path = code/libdf3d
+	url = ../libdf3d.git
