@@ -1,11 +1,12 @@
 cmake_minimum_required(VERSION 3.1)
 
-project(df3d_testapp)
+project(testapp)
 
 include(${PROJECT_SOURCE_DIR}/libdf3d/cmake/libdf3d.cmake)
 
 # Include all the game dependencies.
 add_subdirectory(${PROJECT_SOURCE_DIR}/libdf3d)
+add_subdirectory(${PROJECT_SOURCE_DIR}/third-party/googletest)
 
 if (ANDROID)
     find_host_package(Boost REQUIRED)
@@ -28,6 +29,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/spark/include
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/libRocket/Include
     ${PROJECT_SOURCE_DIR}/src
+    ${PROJECT_SOURCE_DIR}/third-party/googletest/googletest/include
     ${Boost_INCLUDE_DIRS}
 )
 
@@ -48,5 +50,5 @@ if (DF3D_BUILD_SHARED_LIB)
     add_definitions(-DJSON_DLL -DDF3D_SHARED_LIBRARY)
 endif()
 
-add_library(df3d_testapp STATIC ${testapp_SRC_LIST} ${testapp_HEADER_LIST})
-target_link_libraries(df3d_testapp libdf3d)
+add_library(testapp STATIC ${testapp_SRC_LIST} ${testapp_HEADER_LIST})
+target_link_libraries(testapp libdf3d gtest)

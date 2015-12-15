@@ -30,7 +30,7 @@ else()
 
 endif()
 
-target_link_libraries(testapp_exec libdf3d df3d_testapp)
+target_link_libraries(testapp_exec libdf3d testapp)
 
 if (WINDOWS)
     set(PROJECT_BINARY_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
