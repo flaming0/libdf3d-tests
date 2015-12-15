@@ -20,6 +20,7 @@ set(testapp_HEADER_LIST
 
 set(testapp_SRC_LIST
     ${PROJECT_SOURCE_DIR}/src/TestAppDelegate.cpp
+    ${PROJECT_SOURCE_DIR}/src/EcsCoreTest.h
 )
 
 include_directories(
