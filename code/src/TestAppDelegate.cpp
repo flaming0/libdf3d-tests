@@ -1,5 +1,7 @@
 #include "TestAppDelegate.h"
 
+#include <gtest/gtest.h>
+
 df3d::EngineInitParams TestAppDelegate::getInitParams() const
 {
     return df3d::EngineInitParams();
@@ -7,6 +9,12 @@ df3d::EngineInitParams TestAppDelegate::getInitParams() const
 
 bool TestAppDelegate::onAppStarted()
 {
+    int argc = 1;
+    char* argv[] = { "" };
+    ::testing::InitGoogleTest(&argc, argv);
+
+    RUN_ALL_TESTS();
+
     return true;
 }
 
