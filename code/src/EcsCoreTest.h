@@ -45,3 +45,10 @@ TEST_F(EcsCoreTest, EntityManagerTest)
         EXPECT_FALSE(df3d::world().alive(e));
     }
 }
+
+TEST_F(EcsCoreTest, AudioComponentProcessorTest)
+{
+    auto e = df3d::world().spawn();
+    EXPECT_TRUE(e.valid());
+    // TODO:
+}

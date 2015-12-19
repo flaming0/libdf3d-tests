@@ -1,0 +1,17 @@
+material None {
+    technique tech_1 {
+        pass {
+            ambient 1 1 1
+            diffuse 2.8 2.8 2.8
+            specular 1.8 1.8 1.8
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            is_lit true
+            shininess 4.0
+        }
+    }
+}
+
