@@ -16,7 +16,7 @@ protected:
 
     }
 };
-/*
+
 TEST_F(EcsCoreTest, EntityManagerTest)
 {
     auto e = df3d::world().spawn();
@@ -44,7 +44,7 @@ TEST_F(EcsCoreTest, EntityManagerTest)
         EXPECT_TRUE(e.valid());
         EXPECT_FALSE(df3d::world().alive(e));
     }
-}*/
+}
 
 TEST_F(EcsCoreTest, DataHolderTest)
 {
