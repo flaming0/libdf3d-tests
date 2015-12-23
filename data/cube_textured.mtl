@@ -1,0 +1,23 @@
+material Material
+{
+    technique tech_1
+    {
+        pass
+        {
+            ambient 1.0 1.0 1.0 1.0
+            diffuse 10.0 10.0 10.0 1.0
+            specular 0.0 0.0 0.0 0.0
+
+            polygon_mode FILL
+            depth_test true
+            is_lit true
+            shininess 1.0
+
+            sampler diffuseMap
+            {
+                path data/textures/16693081991_ce9eb77489_o.jpg
+                type TEXTURE_2D
+            }
+        }
+    }
+}
