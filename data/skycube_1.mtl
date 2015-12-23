@@ -1,0 +1,173 @@
+material universe_back.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_back6.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}
+
+material universe_bottom.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_bottom4.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}
+
+material universe_front.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_front5.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}
+
+material universe_left.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_left2.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}
+
+material universe_right.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_right1.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}
+
+material universe_top.xml {
+    technique tech_1 {
+        pass {
+            ambient 0 0 0
+            diffuse 1.0 1.0 1.0
+            specular 0 0 0
+            emissive 0 0 0
+            polygon_mode FILL
+            front_face CCW
+            cull_face BACK
+            depth_test true
+            depth_write false
+
+            sampler diffuseMap {
+                path data/textures/Space6_1024_top3.jpg
+                type TEXTURE_2D
+                filtering TRILINEAR
+                wrap_mode CLAMP
+                mipmaps true
+            }
+
+            shader
+            {
+                embed colored
+            }
+        }
+    }
+}

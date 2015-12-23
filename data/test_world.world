@@ -1,0 +1,92 @@
+{
+    /*"post_process" :
+    {
+        "materialLib" : "materials/postfx.mtl",
+        "materialName" : "postprocess_bloom"
+    },*/
+
+    "entities" :
+    [
+        {
+            "components" :
+            [
+                {
+                    "type" : "audio",
+                    "data" :
+                    {
+                        "path" : "data/4mjb00vZq77d.ogg",
+                        "pitch" : 0.7,
+                        "gain" : 0.8,
+                        "looped" : true
+                    }
+                }
+            ]
+        },
+        {
+            "components" :
+            [
+                {
+                    "type" : "transform",
+                    "data" :
+                    {
+                        "position" : [ 0, 0, 0 ],
+                        "rotation" : [ 0, 0, 0 ],
+                        "scale"    : [ 150, 150, 150 ]
+                    }
+                },
+                {
+                    "type" : "mesh",
+                    "data" :
+                    {
+                        "path" : "data/skycube_1.obj"
+                    }
+                }
+            ]
+        },
+        {
+            "components" :
+            [
+                {
+                    "type" : "transform",
+                    "data" :
+                    {
+                        "position" : [ 0, 0, -5 ],
+                        "rotation" : [ 0, 0, 0 ],
+                        "scale"    : [ 1, 1, 1 ]
+                    }
+                },
+                {
+                    "type" : "mesh",
+                    "data" :
+                    {
+                        "path" : "data/teapot.obj"
+                    }
+                }
+            ]
+        }
+    ],
+
+    "fog" :
+    {
+        "density" : 0.0002,
+        "color": [ 1.0, 0.883, 0.658 ]
+    },
+
+    "ambient_light" : [ 0.03, 0.03, 0.03 ],
+
+    "lights" :
+    [
+        {
+            "type" : "directional",
+            "direction" : [ 0.0, 1.0, 0.0 ],
+            "diffuse"   : [ 0.11529411764705882, 0.06, 0.11058823529411764 ],
+            "specular"  : [ 0.0, 0.0, 0.0 ]
+        },
+        {
+            "type" : "directional",
+            "direction" : [ -0.95, -0.0347, 0.307217 ],
+            "diffuse"   : [ 1.44, 1.0574999999999999, 0.585 ],
+            "specular"  : [ 1.7, 1.532, 1.196 ]
+        }
+    ]
+}
