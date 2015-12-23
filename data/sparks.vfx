@@ -1,0 +1,142 @@
+{
+    "worldTransformed" : true,
+
+    "groups" :
+    [
+        {
+            "name" : "halo",
+
+            "ColorInterpolator" :
+            {
+                "type" : "simple",
+
+                "data" :
+                {
+                    "birth" : [ 0.96, 0.9, 0.7, 1.0 ],
+                    "death" : [ 0.96, 0.67, 0.24, 0.1 ]
+                }
+            },
+
+            "ParamInterpolators" :
+            {
+                "scale" :
+                {
+                    "type" : "random",
+
+                    "data" :
+                    {
+                        "birth" : [ 0.7, 0.8],
+                        "death" : [ 0.1, 0.1 ]
+                    }
+                }
+            },
+
+            "Emitters" :
+            [
+                {
+                    "type" : "Static",
+                    "direction" : [0, 0, 1],
+
+                    "flow" : 10,
+                    "minForce" : 1.2,
+                    "maxForce" : 1.4,
+                    "generateOnZoneBorders" : true,
+
+                    "Zone" :
+                    {
+                        "type" : "Point",
+                        "position" : [0.0, 0.0, 0.0]
+                    }
+                }
+            ],
+
+            "Renderer" :
+            {
+                "type" : "quad",
+                "depthTest" : true,
+                "depthWrite" : false,
+                "quadScaleX" : 1,
+                "quadScaleY" : 1,
+                "blending" : "add",
+                "texture" : "data/textures/spark2.png"
+            },
+
+            "minLifeTime" : 1.0,
+            "maxLifeTime" : 1.0,
+            "enableSorting" : true,
+            "maxParticles" : 20
+        },
+
+        {
+            "name" : "sparks",
+
+            "ColorInterpolator" :
+            {
+                "type" : "simple",
+
+                "data" :
+                {
+                    "birth" : [ 0.96, 0.9, 0.7, 1.0 ],
+                    "death" : [ 0.96, 0.67, 0.24, 1.0 ]
+                }
+            },
+
+            "ParamInterpolators" :
+            {
+                "scale" :
+                {
+                    "type" : "random",
+
+                    "data" :
+                    {
+                        "birth" : [ 0.15, 0.15],
+                        "death" : [ 0.0, 0.1 ]
+                    }
+                }
+            },
+
+            "Emitters" :
+            [
+                {
+                    "type" : "Random",
+
+                    "flow" : 60,
+                    "minForce" : 4.2,
+                    "maxForce" : 5.4,
+                    "generateOnZoneBorders" : true,
+
+                    "Zone" :
+                    {
+                        "type" : "Point",
+                        "position" : [0.0, 0.0, 0.0]
+                    }
+                }
+            ],
+
+            "Modifiers" :
+            [
+                {
+                    "type" : "gravity",
+                    "value" : [0, -10, 0]
+                }
+            ],
+
+            "Renderer" :
+            {
+                "type" : "quad",
+                "depthTest" : true,
+                "depthWrite" : false,
+                "quadScaleX" : 0.1,
+                "quadScaleY" : 1,
+                "blending" : "add",
+                "texture" : "data/textures/spark3.png",
+                "orientation" : "direction_aligned"
+            },
+
+            "minLifeTime" : 0.5,
+            "maxLifeTime" : 1.0,
+            "enableSorting" : true,
+            "maxParticles" : 100
+        }
+    ]
+}

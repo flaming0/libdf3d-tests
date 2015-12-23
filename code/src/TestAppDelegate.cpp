@@ -7,6 +7,8 @@ df3d::EngineInitParams TestAppDelegate::getInitParams() const
 {
     auto params = df3d::EngineInitParams();
     params.createConsole = true;
+    params.windowWidth = 1280;
+    params.windowHeight = 960;
     return params;
 }
 
