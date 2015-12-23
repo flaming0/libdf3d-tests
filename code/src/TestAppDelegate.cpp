@@ -26,6 +26,7 @@ bool TestAppDelegate::onAppStarted()
 
     df3d::replaceWorld(df3d::World::newWorld("data/test_world.world"));
     df3d::world().setCamera(make_shared<df3d::FPSCamera>(1.0f, true));
+    df3d::world().physics().getPhysicsWorld()->setGravity({ 0.0f, -1.0f, 0.0f });
 
     return true;
 }
