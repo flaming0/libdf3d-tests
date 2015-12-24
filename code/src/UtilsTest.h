@@ -34,7 +34,7 @@ TEST_F(UtilsTest, SplitTest)
 
 }
 
-TEST_F(UtilsTest, StartsWith)
+TEST_F(UtilsTest, StartsWithTest)
 {
     std::string str1 = "abcd";
     std::string str2 = "--xx";
@@ -50,7 +50,7 @@ TEST_F(UtilsTest, StartsWith)
     EXPECT_TRUE(df3d::utils::starts_with(str3, "a"));
 }
 
-TEST_F(UtilsTest, Clamp)
+TEST_F(UtilsTest, ClampTest)
 {
     EXPECT_EQ(df3d::utils::clamp(4, 3, 5), 4);
     EXPECT_EQ(df3d::utils::clamp(14, 3, 5), 5);
@@ -59,7 +59,40 @@ TEST_F(UtilsTest, Clamp)
     EXPECT_EQ(df3d::utils::clamp(5, 3, 5), 5);
 }
 
-TEST_F(UtilsTest, EndsWith)
+TEST_F(UtilsTest, EndsWithTest)
 {
+    EXPECT_TRUE(df3d::utils::ends_with("fdsfdsaa", "dsaa"));
+    EXPECT_TRUE(df3d::utils::ends_with("fdsfdsaa", "aa"));
+    EXPECT_TRUE(df3d::utils::ends_with("fdsfdsaa", "a"));
+    EXPECT_TRUE(df3d::utils::ends_with("fdsfdsaa", "fdsfdsaa"));
+    EXPECT_FALSE(df3d::utils::ends_with("fdsfdsaa", "sa"));
+    EXPECT_FALSE(df3d::utils::ends_with("fdsfdsaa", "safd"));
+    EXPECT_FALSE(df3d::utils::ends_with("fdsfdsaa", "safdfdsfsddfdsf"));
+}
 
+TEST_F(UtilsTest, TrimTest)
+{
+    std::string str1 = "   abcd";
+    std::string str2 = "abs   ";
+    std::string str3 = "   a ";
+    std::string str4 = "   a b c ";
+
+    df3d::utils::trim(str1);
+    df3d::utils::trim(str4);
+    EXPECT_EQ(str1, "abcd");
+    EXPECT_EQ(str4, "a b c");
+
+    df3d::utils::trim_left(str2);
+    EXPECT_EQ(str2, "abs   ");
+    df3d::utils::trim_right(str2);
+    EXPECT_EQ(str2, "abs");
+    df3d::utils::trim(str2);
+    EXPECT_EQ(str2, "abs");
+
+    df3d::utils::trim(str3);
+    EXPECT_EQ(str3, "a");
+
+    str3 = "";
+    df3d::utils::trim(str3);
+    EXPECT_EQ(str3, "");
 }
