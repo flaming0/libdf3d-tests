@@ -22,7 +22,7 @@ bool TestAppDelegate::onAppStarted()
     RUN_ALL_TESTS();
 
     // Partially load from scene def file.
-    df3d::replaceWorld(df3d::World::newWorld("data/test_world.world"));
+    df3d::replaceWorld("data/test_world.world");
     df3d::world().setCamera(make_shared<df3d::FPSCamera>(1.0f, true));
     df3d::world().physics().getPhysicsWorld()->setGravity({ 0.0f, -10.0f, 0.0f });
 
@@ -36,7 +36,7 @@ bool TestAppDelegate::onAppStarted()
     params.mass = 0.0f;     // Make it static body.
     df3d::world().physics().add(e, params, df3d::world().staticMesh().getMeshData(e));
 
-    df3d::svc().debugConsole()->getCVars().set(df3d::CVAR_DEBUG_DRAW, "1");
+    //df3d::svc().debugConsole()->getCVars().set(df3d::CVAR_DEBUG_DRAW, "1");
 
     auto testEnt = df3d::world().spawn(std::string("data/teapot.entity"));
 
