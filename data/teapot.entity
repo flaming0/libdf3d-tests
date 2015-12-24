@@ -16,10 +16,79 @@
             {
                 "path" : "data/teapot.obj"
             }
+        },
+        {
+            "type" : "physics",
+            "data" :
+            {
+                "shape" : "convex_hull",
+                "mass" : 3.0,
+                "friction" : 0.7,
+                "restitution" : 0.7,
+                "linearDamping" : 0.5,
+                "angularDamping" : 0.1,
+                "disableDeactivation" : true
+            }
         }
     ],
 
     "children" :
     [
+        {
+            "components" :
+            [
+                {
+                    "type" : "transform",
+                    "data" :
+                    {
+                        "position" : [ 0, -1, 0 ],
+                        "rotation" : [ 0, 0, 0 ],
+                        "scale"    : [ 1, 1, 1 ]
+                    }
+                },
+                {
+                    "type" : "mesh",
+                    "data" :
+                    {
+                        "path" : "data/cube_textured.obj"
+                    }
+                },
+                {
+                    "type" : "debug_name",
+                    "data" :
+                    {
+                        "name" : "first"
+                    }
+                }
+            ]
+        },
+        {
+            "components" :
+            [
+                {
+                    "type" : "transform",
+                    "data" :
+                    {
+                        "position" : [ -2.5, -1, 0 ],
+                        "rotation" : [ 0, 0, 0 ],
+                        "scale"    : [ 1, 1, 1 ]
+                    }
+                },
+                {
+                    "type" : "mesh",
+                    "data" :
+                    {
+                        "path" : "data/cube_textured.obj"
+                    }
+                },
+                {
+                    "type" : "debug_name",
+                    "data" :
+                    {
+                        "name" : "second"
+                    }
+                }
+            ]
+        }
     ]
 }
