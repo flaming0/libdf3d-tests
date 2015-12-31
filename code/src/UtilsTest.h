@@ -96,3 +96,59 @@ TEST_F(UtilsTest, TrimTest)
     df3d::utils::trim(str3);
     EXPECT_EQ(str3, "");
 }
+
+TEST_F(UtilsTest, ReplaceAllTest)
+{
+    std::string s1;
+    df3d::utils::replace_all(s1, "fd", "ss");
+    EXPECT_EQ(s1, "");
+
+    s1 = "afttsfd ftt tff ftty";
+    df3d::utils::replace_all(s1, "ftt", ".");
+    EXPECT_EQ(s1, "a.sfd . tff .y");
+
+    df3d::utils::replace_all(s1, "a", ".");
+    EXPECT_EQ(s1, "..sfd . tff .y");
+
+    df3d::utils::replace_all(s1, ".", "");
+    EXPECT_EQ(s1, "sfd  tff y");
+}
+
+TEST_F(UtilsTest, AnyTest)
+{
+    df3d::utils::Any a1;
+    EXPECT_TRUE(a1.empty());
+    a1.clear();
+    EXPECT_TRUE(a1.empty());
+
+    df3d::utils::Any a3(a1);
+    EXPECT_TRUE(a3.empty());
+    a3.clear();
+    EXPECT_TRUE(a3.empty());
+
+    df3d::utils::Any a2(56);
+    EXPECT_FALSE(a2.empty());
+    EXPECT_EQ(a2.get<int>(), 56);
+
+    df3d::utils::Any a4(a2);
+    EXPECT_FALSE(a2.empty());
+    EXPECT_EQ(a2.get<int>(), 56);
+    EXPECT_FALSE(a4.empty());
+    EXPECT_EQ(a4.get<int>(), 56);
+}
+
+TEST_F(UtilsTest, DictTest)
+{
+    df3d::utils::Dict d1;
+    EXPECT_FALSE(d1.contains("a_key"));
+
+    d1.set("a_key", 228);
+    EXPECT_TRUE(d1.contains("a_key"));
+    EXPECT_EQ(d1.get<int>("a_key"), 228);
+
+    d1.set("a_key", 2298);
+    EXPECT_EQ(d1.get<int>("a_key"), 2298);
+
+    d1.erase("a_key");
+    EXPECT_FALSE(d1.contains("a_key"));
+}

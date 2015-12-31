@@ -8,12 +8,6 @@ include(${PROJECT_SOURCE_DIR}/libdf3d/cmake/libdf3d.cmake)
 add_subdirectory(${PROJECT_SOURCE_DIR}/libdf3d)
 add_subdirectory(${PROJECT_SOURCE_DIR}/third-party/googletest)
 
-if (ANDROID)
-    find_host_package(Boost REQUIRED)
-else()
-    find_package(Boost REQUIRED)
-endif()
-
 set(testapp_HEADER_LIST
     ${PROJECT_SOURCE_DIR}/src/TestAppDelegate.h
 )
@@ -30,6 +24,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/bullet/src
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/spark/include
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/libRocket/Include
+    ${PROJECT_SOURCE_DIR}/libdf3d/third-party/squirrel/include
     ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/third-party/googletest/googletest/include
     ${Boost_INCLUDE_DIRS}
