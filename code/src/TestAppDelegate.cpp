@@ -30,8 +30,8 @@ bool TestAppDelegate::onAppStarted()
     auto e = df3d::world().spawn();
 
     df3d::world().staticMesh().add(e, "data/cube_textured.obj", df3d::ResourceLoadingMode::IMMEDIATE);
-    df3d::world().transform().translate(e, { 0.0f, -10.0, 0.0f });
-    df3d::world().transform().scale(e, { 50.0f, 0.0001f, 50.0f });
+    df3d::world().sceneGraph().translate(e, { 0.0f, -10.0, 0.0f });
+    df3d::world().sceneGraph().scale(e, { 50.0f, 0.0001f, 50.0f });
     df3d::PhysicsComponentCreationParams params;
     params.mass = 0.0f;     // Make it static body.
     df3d::world().physics().add(e, params, df3d::world().staticMesh().getMeshData(e));
@@ -42,41 +42,41 @@ bool TestAppDelegate::onAppStarted()
 
     df3d::svc().world().timeManager().subscribeUpdate([testEnt]() {
         if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_7))
-            df3d::world().transform().translate(testEnt, { 0.0f, -0.3f, 0.0f });
+            df3d::world().sceneGraph().translate(testEnt, { 0.0f, -0.3f, 0.0f });
         else if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_8))
-            df3d::world().transform().translate(testEnt, { 0.0f, 0.3f, 0.0f });
+            df3d::world().sceneGraph().translate(testEnt, { 0.0f, 0.3f, 0.0f });
         else if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_6))
-            df3d::world().transform().scale(testEnt, { 1.001f, 1.001f, 1.001f });
+            df3d::world().sceneGraph().scale(testEnt, { 1.001f, 1.001f, 1.001f });
         else if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_5))
-            df3d::world().transform().rotatePitch(testEnt, 1.0f);
+            df3d::world().sceneGraph().rotatePitch(testEnt, 1.0f);
         else if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_4))
-            df3d::world().transform().rotateYaw(testEnt, 1.0f);
+            df3d::world().sceneGraph().rotateYaw(testEnt, 1.0f);
 
         if (df3d::svc().inputManager().getMouseButtonReleased(df3d::MouseButton::MIDDLE))
-            df3d::world().transform().detachAllChildren(testEnt);
+            df3d::world().sceneGraph().detachAllChildren(testEnt);
 
         if (df3d::svc().inputManager().getKeyPressed(df3d::KeyCode::KEY_0))
         {
-            auto e1 = df3d::world().debugName().getByName("first");
+            auto e1 = df3d::world().sceneGraph().getByName("first");
             //df3d::world().destroy(testEnt);
-            df3d::world().transform().detachChild(testEnt, e1);
+            df3d::world().sceneGraph().detachChild(testEnt, e1);
         }
         if (df3d::svc().inputManager().getKeyPressed(df3d::KeyCode::KEY_1))
         {
-            auto e1 = df3d::world().debugName().getByName("second");
+            auto e1 = df3d::world().sceneGraph().getByName("second");
             //df3d::world().destroy(e1);
-            df3d::world().transform().detachChild(testEnt, e1);
+            df3d::world().sceneGraph().detachChild(testEnt, e1);
         }
 
         if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_2))
         {
-            auto e1 = df3d::world().debugName().getByName("first");
-            df3d::world().transform().attachChild(testEnt, e1);
+            auto e1 = df3d::world().sceneGraph().getByName("first");
+            df3d::world().sceneGraph().attachChild(testEnt, e1);
         }
         if (df3d::svc().inputManager().getKey(df3d::KeyCode::KEY_3))
         {
-            auto e1 = df3d::world().debugName().getByName("second");
-            df3d::world().transform().attachChild(testEnt, e1);
+            auto e1 = df3d::world().sceneGraph().getByName("second");
+            df3d::world().sceneGraph().attachChild(testEnt, e1);
         }
     });
 

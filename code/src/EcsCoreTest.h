@@ -158,3 +158,55 @@ TEST_F(EcsCoreTest, DataHolderTest)
 
     EXPECT_TRUE(holder1.getSize() == 0);
 }
+
+TEST_F(EcsCoreTest, TagComponentProcessorTest)
+{
+    std::vector<df3d::Entity> ents;
+    for (int i = 0; i < 100; i++)
+        ents.push_back(df3d::world().spawn());
+
+    df3d::TagComponentProcessor tags;
+
+    int MEGA_TAG = 4;
+    int OTHER_MEGA_TAG = 2;
+
+    for (auto e : ents)
+        tags.add(e, MEGA_TAG);
+
+    for (auto e : ents)
+    {
+        EXPECT_TRUE(tags.hasTag(e, MEGA_TAG));
+        EXPECT_FALSE(tags.hasTag(e, OTHER_MEGA_TAG));
+    }
+
+    auto withTag = tags.getEntities(OTHER_MEGA_TAG);
+    EXPECT_TRUE(withTag.empty());
+
+    withTag = tags.getEntities(MEGA_TAG);
+    for (auto e : ents)
+        EXPECT_TRUE(withTag.count(e) == 1);
+
+    for (auto e : ents)
+        tags.remove(e);
+
+    for (auto e : ents)
+    {
+        EXPECT_FALSE(tags.hasTag(e, MEGA_TAG));
+        EXPECT_FALSE(tags.hasTag(e, OTHER_MEGA_TAG));
+    }
+
+    for (int i = 0; i < 100; i++)
+        tags.add(ents[i], i);
+
+    for (int i = 0; i < 100; i++)
+        EXPECT_TRUE(tags.hasTag(ents[i], i));
+
+    std::list<df3d::Entity> cleaning(ents.begin(), ents.end());
+    (static_cast<df3d::EntityComponentProcessor&>(tags)).cleanStep(cleaning);
+
+    for (int i = 0; i < 100; i++)
+        EXPECT_FALSE(tags.hasTag(ents[i], i));
+
+    for (auto e : ents)
+        df3d::world().destroy(e);
+}

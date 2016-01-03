@@ -2,7 +2,7 @@
     "components" :
     [
         {
-            "type" : "transform",
+            "type" : "scenegraph",
             "data" :
             {
                 "position" : [ 0, 0, -15 ],
@@ -38,12 +38,13 @@
             "components" :
             [
                 {
-                    "type" : "transform",
+                    "type" : "scenegraph",
                     "data" :
                     {
                         "position" : [ 0, -1, 0 ],
                         "rotation" : [ 0, 0, 0 ],
-                        "scale"    : [ 1, 1, 1 ]
+                        "scale"    : [ 1, 1, 1 ],
+                        "name" : "first"
                     }
                 },
                 {
@@ -51,13 +52,6 @@
                     "data" :
                     {
                         "path" : "data/cube_textured.obj"
-                    }
-                },
-                {
-                    "type" : "debug_name",
-                    "data" :
-                    {
-                        "name" : "first"
                     }
                 }
             ]
@@ -66,12 +60,13 @@
             "components" :
             [
                 {
-                    "type" : "transform",
+                    "type" : "scenegraph",
                     "data" :
                     {
                         "position" : [ -2.5, -1, 0 ],
                         "rotation" : [ 0, 0, 0 ],
-                        "scale"    : [ 1, 1, 1 ]
+                        "scale"    : [ 1, 1, 1 ],
+                        "name" : "second"
                     }
                 },
                 {
@@ -79,13 +74,6 @@
                     "data" :
                     {
                         "path" : "data/cube_textured.obj"
-                    }
-                },
-                {
-                    "type" : "debug_name",
-                    "data" :
-                    {
-                        "name" : "second"
                     }
                 }
             ]
