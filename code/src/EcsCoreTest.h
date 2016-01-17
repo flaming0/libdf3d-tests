@@ -209,4 +209,30 @@ TEST_F(EcsCoreTest, TagComponentProcessorTest)
 
     for (auto e : ents)
         df3d::world().destroy(e);
+
+    ents.clear();
+
+    for (int i = 0; i < 100; i++)
+        ents.push_back(df3d::world().spawn());
+
+    for (auto e : ents)
+    {
+        tags.add(e, MEGA_TAG);
+        tags.add(e, OTHER_MEGA_TAG);
+    }
+
+    for (auto e : ents)
+    {
+        EXPECT_TRUE(tags.hasTag(e, MEGA_TAG));
+        EXPECT_TRUE(tags.hasTag(e, OTHER_MEGA_TAG));
+    }
+
+    for (auto e : ents)
+        tags.remove(e);
+
+    for (auto e : ents)
+    {
+        EXPECT_FALSE(tags.hasTag(e, MEGA_TAG));
+        EXPECT_FALSE(tags.hasTag(e, OTHER_MEGA_TAG));
+    }
 }
