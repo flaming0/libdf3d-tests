@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <df3d.h>
+#include <game/impl/EntityManager.h>
 
 class EcsCoreTest : public testing::Test
 {
@@ -16,6 +17,64 @@ protected:
 
     }
 };
+
+TEST_F(EcsCoreTest, EntityManagerTest1)
+{
+    auto isUnique = [](std::vector<df3d::Entity> v)
+    {
+        std::sort(v.begin(), v.end(), [](const df3d::Entity &a, const df3d::Entity &b) { return a.id < b.id; });
+        return std::unique(v.begin(), v.end()) == v.end();
+    };
+
+    df3d::game_impl::EntityManager em1;
+
+    std::vector<df3d::Entity> ents;
+    for (int i = 0; i < 100; i++)
+        ents.push_back(em1.create());
+
+    for (int i = 0; i < 100; i++)
+        EXPECT_EQ(ents[i].id, i);
+
+    for (int i = 50; i < 100; i++)
+        em1.destroy(ents[i]);
+
+    std::vector<df3d::Entity> ents2;
+
+    for (int i = 0; i < 30; i++)
+        ents2.push_back(em1.create());
+
+    for (int i = 0; i < 30; i++)
+        EXPECT_EQ(ents2[i].id, 100 + i);
+
+    for (int i = 50; i < 100; i++)
+        EXPECT_FALSE(em1.alive(ents[i]));
+    for (int i = 0; i < 50; i++)
+        EXPECT_TRUE(em1.alive(ents[i]));
+    for (int i = 0; i < 30; i++)
+        EXPECT_TRUE(em1.alive(ents2[i]));
+    ents.erase(ents.begin() + 50, ents.end());
+
+    EXPECT_TRUE(isUnique(ents));
+    EXPECT_TRUE(isUnique(ents2));
+
+    auto all = ents;
+    all.insert(all.end(), ents2.begin(), ents2.end());
+    EXPECT_TRUE(isUnique(all));
+
+    em1.cleanStep();
+    std::vector<df3d::Entity> ents3;
+    for (int i = 0; i < 50; i++)
+        ents3.push_back(em1.create());
+    for (int i = 0; i < 50; i++)
+        EXPECT_EQ(ents3[i].id, 50 + i);
+
+    all = ents;
+    all.insert(all.end(), ents2.begin(), ents2.end());
+    all.insert(all.end(), ents3.begin(), ents3.end());
+
+    EXPECT_TRUE(isUnique(all));
+    EXPECT_EQ(all.size(), em1.size());
+}
 
 TEST_F(EcsCoreTest, EntityManagerTest)
 {
