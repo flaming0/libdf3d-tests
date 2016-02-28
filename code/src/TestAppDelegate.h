@@ -1,6 +1,6 @@
 #pragma once
 
-#include "df3d.h"
+#include <libdf3d/df3d.h>
 
 class TestAppDelegate : public df3d::AppDelegate
 {

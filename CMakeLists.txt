@@ -21,7 +21,7 @@ endif()
 add_subdirectory(${PROJECT_SOURCE_DIR}/code)
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/code/libdf3d/libdf3d
+    ${PROJECT_SOURCE_DIR}/code/libdf3d/
 )
 
 if (DF3D_DESKTOP)
@@ -31,16 +31,3 @@ else()
 endif()
 
 target_link_libraries(testapp_exec libdf3d testapp)
-
-if (WINDOWS)
-    set(PROJECT_BINARY_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
-
-    function(copy_dll dll_name)
-        add_custom_command(TARGET testapp_exec
-            POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy ${dll_name} ${PROJECT_BINARY_DIR}/.
-        )
-    endfunction()
-
-    copy_dll(${PROJECT_SOURCE_DIR}/code/libdf3d/third-party/prebuilt_win32/OpenAL32.dll)
-endif()

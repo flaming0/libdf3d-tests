@@ -19,7 +19,7 @@ set(testapp_SRC_LIST
 )
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/libdf3d/libdf3d
+    ${PROJECT_SOURCE_DIR}/libdf3d/
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/bullet/src
     ${PROJECT_SOURCE_DIR}/libdf3d/third-party/spark/include

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <gtest/gtest.h>
-#include <df3d.h>
-#include <game/impl/EntityManager.h>
+#include <libdf3d/df3d.h>
+#include <libdf3d/game/impl/EntityManager.h>
 
 class EcsCoreTest : public testing::Test
 {
