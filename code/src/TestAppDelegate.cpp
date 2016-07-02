@@ -3,6 +3,7 @@
 #include <gtest/gtest.h>
 #include "EcsCoreTest.h"
 #include "UtilsTest.h"
+#include "ArrayTest.h"
 
 df3d::EngineInitParams TestAppDelegate::getInitParams() const
 {
