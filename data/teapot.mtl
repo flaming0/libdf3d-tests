@@ -1,17 +1,31 @@
-material None {
-    technique tech_1 {
-        pass {
-            ambient 1 1 1
-            diffuse 2.8 2.8 2.8
-            specular 1.8 1.8 1.8
-            emissive 0 0 0
-            polygon_mode FILL
-            front_face CCW
-            cull_face BACK
-            depth_test true
-            is_lit true
-            shininess 4.0
-        }
-    }
-}
+{
+  "materials" :
+  [
+    {
+      "id" : "None",
+      "techniques" :
+      [
+        {
+          "id" : "tech_1",
+          "passes" :
+          [
+            {
+              "ambient" : [ 1, 1, 1, 1 ],
+              "cull_face" : "BACK",
+              "depth_test" : true,
+              "diffuse" : [ 10, 10, 10, 1 ],
+              "is_lit" : true,
 
+              "shader" :
+              {
+                "embed" : "simple_lighting"
+              },
+              "shininess" : 11.078431129455566,
+              "specular" : [ 0, 0, 0, 1 ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

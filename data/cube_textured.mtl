@@ -1,23 +1,38 @@
-material Material
 {
-    technique tech_1
+  "materials" :
+  [
     {
-        pass
+      "id" : "Material",
+      "techniques" :
+      [
         {
-            ambient 1.0 1.0 1.0 1.0
-            diffuse 10.0 10.0 10.0 1.0
-            specular 0.0 0.0 0.0 0.0
-
-            polygon_mode FILL
-            depth_test true
-            is_lit true
-            shininess 1.0
-
-            sampler diffuseMap
+          "id" : "tech_1",
+          "passes" :
+          [
             {
-                path data/textures/16693081991_ce9eb77489_o.jpg
-                type TEXTURE_2D
+              "ambient" : [ 1, 1, 1, 1 ],
+              "cull_face" : "BACK",
+              "depth_test" : true,
+              "diffuse" : [ 10, 10, 10, 1 ],
+              "is_lit" : true,
+              "samplers" :
+              [
+                {
+                  "id" : "diffuseMap",
+                  "path" : "data/textures/16693081991_ce9eb77489_o.jpg",
+                  "type" : "TEXTURE_2D"
+                }
+              ],
+              "shader" :
+              {
+                "embed" : "simple_lighting"
+              },
+              "shininess" : 11.078431129455566,
+              "specular" : [ 0, 0, 0, 1 ]
             }
+          ]
         }
+      ]
     }
+  ]
 }
