@@ -25,6 +25,7 @@ set(testapp_HEADER_LIST
     ${PROJECT_SOURCE_DIR}/code/src/TestAppDelegate.h
     ${PROJECT_SOURCE_DIR}/code/src/EcsCoreTest.h
     ${PROJECT_SOURCE_DIR}/code/src/UtilsTest.h
+    ${PROJECT_SOURCE_DIR}/code/src/Common.h
 )
 
 set(testapp_SRC_LIST
