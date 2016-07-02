@@ -5,6 +5,6 @@ rmdir build /s /q
 :build
 mkdir build
 cd build
-cmake ..
+cmake .. -Dgtest_force_shared_crt=ON
 
 pause

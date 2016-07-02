@@ -26,7 +26,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]
@@ -58,7 +59,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]
@@ -90,7 +92,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]
@@ -122,7 +125,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]
@@ -154,7 +158,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]
@@ -186,7 +191,8 @@
               ],
               "shader" :
               {
-                "embed" : "colored"
+                "vertex" : "data/texture_color.vert",
+                "fragment" : "data/texture_color.frag"
               }
             }
           ]

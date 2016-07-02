@@ -20,6 +20,7 @@
               {
                 "embed" : "simple_lighting"
               },
+              "samplers" : [ { "id" : "diffuseMap" } ],
               "shininess" : 11.078431129455566,
               "specular" : [ 0, 0, 0, 1 ]
             }
