@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include <libdf3d/df3d.h>
+#include "Common.h"
+#include <df3d/df3d.h>
 
 class UtilsTest : public testing::Test
 {
@@ -116,21 +117,21 @@ TEST_F(UtilsTest, ReplaceAllTest)
 
 TEST_F(UtilsTest, AnyTest)
 {
-    df3d::utils::Any a1;
+    df3d::Any a1;
     EXPECT_TRUE(a1.empty());
     a1.clear();
     EXPECT_TRUE(a1.empty());
 
-    df3d::utils::Any a3(a1);
+    df3d::Any a3(a1);
     EXPECT_TRUE(a3.empty());
     a3.clear();
     EXPECT_TRUE(a3.empty());
 
-    df3d::utils::Any a2(56);
+    df3d::Any a2(56);
     EXPECT_FALSE(a2.empty());
     EXPECT_EQ(a2.get<int>(), 56);
 
-    df3d::utils::Any a4(a2);
+    df3d::Any a4(a2);
     EXPECT_FALSE(a2.empty());
     EXPECT_EQ(a2.get<int>(), 56);
     EXPECT_FALSE(a4.empty());
@@ -139,7 +140,7 @@ TEST_F(UtilsTest, AnyTest)
 
 TEST_F(UtilsTest, DictTest)
 {
-    df3d::utils::Dict d1;
+    df3d::Dict d1;
     EXPECT_FALSE(d1.contains("a_key"));
 
     d1.set("a_key", 228);

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <gtest/gtest.h>
-#include <libdf3d/df3d.h>
-#include <libdf3d/game/impl/EntityManager.h>
+#include "Common.h"
+#include <df3d/game/impl/EntityManager.h>
 
 class EcsCoreTest : public testing::Test
 {
@@ -78,30 +78,30 @@ TEST_F(EcsCoreTest, EntityManagerTest1)
 
 TEST_F(EcsCoreTest, EntityManagerTest)
 {
-    auto e = df3d::world().spawn();
+    auto e = world().spawn();
     EXPECT_TRUE(e.valid());
-    EXPECT_TRUE(df3d::world().alive(e));
-    df3d::world().destroy(e);
-    EXPECT_FALSE(df3d::world().alive(e));
+    EXPECT_TRUE(world().alive(e));
+    world().destroy(e);
+    EXPECT_FALSE(world().alive(e));
     EXPECT_TRUE(e.valid());
 
     std::vector<df3d::Entity> entities;
     for (int i = 0; i < 100; i++)
-        entities.push_back(df3d::world().spawn());
+        entities.push_back(world().spawn());
 
     for (auto e : entities)
     {
         EXPECT_TRUE(e.valid());
-        EXPECT_TRUE(df3d::world().alive(e));
+        EXPECT_TRUE(world().alive(e));
     }
 
     for (auto e : entities)
-        df3d::world().destroy(e);
+        world().destroy(e);
 
     for (auto e : entities)
     {
         EXPECT_TRUE(e.valid());
-        EXPECT_FALSE(df3d::world().alive(e));
+        EXPECT_FALSE(world().alive(e));
     }
 }
 
@@ -120,7 +120,7 @@ TEST_F(EcsCoreTest, DataHolderTest)
     std::vector<df3d::Entity> ents;
     for (int i = 0; i < SZ; i++)
     {
-        ents.push_back(df3d::world().spawn());
+        ents.push_back(world().spawn());
 
         MyData d;
         d.idint = ents.back().id;
@@ -131,7 +131,7 @@ TEST_F(EcsCoreTest, DataHolderTest)
 
     for (auto e : ents)
     {
-        EXPECT_TRUE(df3d::world().alive(e));
+        EXPECT_TRUE(world().alive(e));
         ASSERT_TRUE(holder1.lookup(e).valid());
         EXPECT_TRUE(holder1.getData(e).idint == e.id);
         EXPECT_TRUE(holder1.getData(e).idstr == std::to_string(e.id) + "_ent");
@@ -160,14 +160,14 @@ TEST_F(EcsCoreTest, DataHolderTest)
     EXPECT_TRUE(holder1.getSize() == 0);
 
     for (auto e : ents)
-        df3d::world().destroy(e);
+        world().destroy(e);
     ents.clear();
 
     // Random test.
 
     for (int i = 0; i < SZ; i++)
     {
-        ents.push_back(df3d::world().spawn());
+        ents.push_back(world().spawn());
 
         MyData d;
         d.idint = ents.back().id;
@@ -178,7 +178,7 @@ TEST_F(EcsCoreTest, DataHolderTest)
 
     for (auto e : ents)
     {
-        EXPECT_TRUE(df3d::world().alive(e));
+        EXPECT_TRUE(world().alive(e));
         ASSERT_TRUE(holder1.lookup(e).valid());
         EXPECT_TRUE(holder1.getData(e).idint == e.id);
         EXPECT_TRUE(holder1.getData(e).idstr == std::to_string(e.id) + "_ent");
@@ -190,13 +190,13 @@ TEST_F(EcsCoreTest, DataHolderTest)
         auto e = ents.at(idx);
 
         holder1.remove(e);
-        df3d::world().destroy(e);
+        world().destroy(e);
         ents.erase(ents.begin() + idx);
     }
 
     for (auto e : ents)
     {
-        EXPECT_TRUE(df3d::world().alive(e));
+        EXPECT_TRUE(world().alive(e));
         ASSERT_TRUE(holder1.lookup(e).valid());
         EXPECT_TRUE(holder1.getData(e).idint == e.id);
         EXPECT_TRUE(holder1.getData(e).idstr == std::to_string(e.id) + "_ent");
@@ -208,12 +208,12 @@ TEST_F(EcsCoreTest, DataHolderTest)
         auto e = ents.at(idx);
 
         holder1.remove(e);
-        df3d::world().destroy(e);
+        world().destroy(e);
         ents.erase(ents.begin() + idx);
     }
 
     for (auto e : ents)
-        EXPECT_FALSE(df3d::world().alive(e));
+        EXPECT_FALSE(world().alive(e));
 
     EXPECT_TRUE(holder1.getSize() == 0);
 }
@@ -222,7 +222,7 @@ TEST_F(EcsCoreTest, TagComponentProcessorTest)
 {
     std::vector<df3d::Entity> ents;
     for (int i = 0; i < 100; i++)
-        ents.push_back(df3d::world().spawn());
+        ents.push_back(world().spawn());
 
     df3d::TagComponentProcessor tags;
 
@@ -267,12 +267,12 @@ TEST_F(EcsCoreTest, TagComponentProcessorTest)
         EXPECT_FALSE(tags.hasTag(ents[i], i));
 
     for (auto e : ents)
-        df3d::world().destroy(e);
+        world().destroy(e);
 
     ents.clear();
 
     for (int i = 0; i < 100; i++)
-        ents.push_back(df3d::world().spawn());
+        ents.push_back(world().spawn());
 
     for (auto e : ents)
     {
